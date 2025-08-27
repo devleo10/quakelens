@@ -33,7 +33,6 @@ export default function MapSection({
         <CardHeader className="bg-gradient-to-r from-slate-50 to-blue-50 dark:from-slate-800 dark:to-slate-700 min-h-[100px]">
           <MapHeader
             loading={loading}
-            fetchEarthquakeData={fetchEarthquakeData}
             earthquakeData={earthquakeData}
             filteredEarthquakes={filteredEarthquakes}
             formatTime={formatTime}

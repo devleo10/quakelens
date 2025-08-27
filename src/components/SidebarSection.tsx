@@ -25,8 +25,6 @@ export default function SidebarSection({
       <SidebarFilter
         selectedMagnitude={selectedMagnitude}
         setSelectedMagnitude={setSelectedMagnitude}
-        fetchEarthquakeData={fetchEarthquakeData}
-        loading={loading}
         minHeight="min-h-[120px]"
       />
       <div className="flex-1 min-h-0">
