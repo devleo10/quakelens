@@ -1,5 +1,3 @@
-import React from 'react';
-
 interface Earthquake {
   id: string;
   properties: {

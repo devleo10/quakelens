@@ -1,19 +1,14 @@
 import { Card, CardHeader, CardTitle, CardContent } from "@/components/ui/card"
-import { Button } from "@/components/ui/button"
-import { Loader2, Activity, Layers } from "lucide-react"
+import { Layers } from "lucide-react"
 
 interface SidebarFilterProps {
   selectedMagnitude: number
   setSelectedMagnitude: (n: number) => void
-  fetchEarthquakeData: () => void
-  loading: boolean
 }
 
 export default function SidebarFilter({
   selectedMagnitude,
   setSelectedMagnitude,
-  fetchEarthquakeData,
-  loading,
   minHeight = ""
 }: SidebarFilterProps & { minHeight?: string }) {
   return (
@@ -47,25 +42,6 @@ export default function SidebarFilter({
             <span className="text-red-700 dark:text-red-300">8+</span>
           </div>
         </div>
-        {/*
-        <Button
-          onClick={fetchEarthquakeData}
-          className="w-full bg-blue-600 hover:bg-blue-700 text-white font-semibold text-sm py-2 h-9 border-0 shadow-md"
-          disabled={loading}
-        >
-          {loading ? (
-            <>
-              <Loader2 className="h-4 w-4 animate-spin mr-2" />
-              Refreshing...
-            </>
-          ) : (
-            <>
-              <Activity className="h-4 w-4 mr-2" />
-              Refresh Data
-            </>
-          )}
-        </Button>
-        */}
       </CardContent>
     </Card>
   )

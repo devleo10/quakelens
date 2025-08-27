@@ -1,8 +1,7 @@
-import { Loader2, Activity } from "lucide-react"
+import { Activity } from "lucide-react"
 
 interface MapHeaderProps {
   loading: boolean
-  fetchEarthquakeData: () => void
   earthquakeData: any
   filteredEarthquakes: any[]
   formatTime: (timestamp: number) => string
@@ -10,7 +9,6 @@ interface MapHeaderProps {
 
 export default function MapHeader({
   loading,
-  fetchEarthquakeData,
   earthquakeData,
   filteredEarthquakes,
   formatTime,
