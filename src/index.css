@@ -1,0 +1,346 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --background: 0 0% 100%;
+  --foreground: 222.2 84% 4.9%;
+  --card: 0 0% 100%;
+  --card-foreground: 222.2 84% 4.9%;
+  --popover: 0 0% 100%;
+  --popover-foreground: 222.2 84% 4.9%;
+  --primary: 221.2 83.2% 53.3%;
+  --primary-foreground: 210 40% 98%;
+  --secondary: 210 40% 96%;
+  --secondary-foreground: 222.2 84% 4.9%;
+  --muted: 210 40% 96%;
+  --muted-foreground: 215.4 16.3% 46.9%;
+  --accent: 210 40% 96%;
+  --accent-foreground: 222.2 84% 4.9%;
+  --destructive: 0 84.2% 60.2%;
+  --destructive-foreground: 210 40% 98%;
+  --border: 214.3 31.8% 91.4%;
+  --input: 214.3 31.8% 91.4%;
+  --ring: 221.2 83.2% 53.3%;
+  --radius: 0.5rem;
+}
+
+.dark {
+  --background: 222.2 84% 4.9%;
+  --foreground: 210 40% 98%;
+  --card: 222.2 84% 4.9%;
+  --card-foreground: 210 40% 98%;
+  --popover: 222.2 84% 4.9%;
+  --popover-foreground: 210 40% 98%;
+  --primary: 217.2 91.2% 59.8%;
+  --primary-foreground: 222.2 84% 4.9%;
+  --secondary: 217.2 32.6% 17.5%;
+  --secondary-foreground: 210 40% 98%;
+  --muted: 217.2 32.6% 17.5%;
+  --muted-foreground: 215 20.2% 65.1%;
+  --accent: 217.2 32.6% 17.5%;
+  --accent-foreground: 210 40% 98%;
+  --destructive: 0 62.8% 30.6%;
+  --destructive-foreground: 210 40% 98%;
+  --border: 217.2 32.6% 17.5%;
+  --input: 217.2 32.6% 17.5%;
+  --ring: 224.3 76.3% 94.1%;
+}
+
+@layer base {
+  * {
+    border-color: hsl(var(--border));
+  }
+  body {
+    background-color: hsl(var(--background));
+    color: hsl(var(--foreground));
+    margin: 0;
+    min-height: 100vh;
+  }
+}
+
+/* Leaflet CSS styles for proper map rendering */
+.leaflet-container {
+  height: 100% !important;
+  width: 100% !important;
+  z-index: 1 !important;
+  position: relative !important;
+  border-radius: 0.5rem;
+  overflow: visible !important; /* Allow popups to overflow map bounds */
+}
+
+/* Fix potential layout issues */
+.leaflet-container .leaflet-control-container {
+  pointer-events: none;
+}
+
+.leaflet-container .leaflet-control-container .leaflet-control {
+  pointer-events: auto;
+}
+
+/* Enhanced Leaflet Popup Styling with overlay capability */
+
+/* Ensure Leaflet popups always appear above all other UI */
+.leaflet-popup-pane {
+  z-index: 99999 !important;
+  pointer-events: none;
+}
+
+.leaflet-popup {
+  z-index: 100000 !important;
+  pointer-events: auto !important;
+  box-shadow: 0 8px 32px 0 rgba(0,0,0,0.25), 0 1.5px 6px 0 rgba(0,0,0,0.10);
+  position: absolute !important;
+}
+
+/* Ensure popup stays within bounds */
+.leaflet-popup.leaflet-zoom-animated {
+  will-change: transform;
+}
+
+.leaflet-popup-content-wrapper {
+  background: hsl(var(--card)) !important;
+  color: hsl(var(--card-foreground)) !important;
+  border-radius: 12px !important;
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.25) !important;
+  border: 1px solid hsl(var(--border)) !important;
+  padding: 0 !important;
+  margin: 0 !important;
+  min-width: 300px !important;
+  max-width: 350px !important;
+  font-family: inherit !important;
+  z-index: 100000 !important;
+  position: relative !important;
+  overflow: visible !important;
+}
+
+.leaflet-popup-content {
+  margin: 0 !important;
+  padding: 0 !important;
+  font-family: inherit !important;
+  line-height: inherit !important;
+  color: inherit !important;
+  width: auto !important;
+}
+
+.leaflet-popup-tip {
+  background: hsl(var(--card)) !important;
+  border-color: hsl(var(--border)) !important;
+  z-index: 2147483646 !important;
+}
+
+.leaflet-popup-close-button {
+  color: hsl(var(--muted-foreground)) !important;
+  top: 8px !important;
+  right: 8px !important;
+  font-size: 18px !important;
+  font-weight: bold !important;
+  padding: 4px !important;
+  width: auto !important;
+  height: auto !important;
+  transition: color 0.2s ease !important;
+  z-index: 100001 !important;
+}
+
+.leaflet-popup-close-button:hover {
+  color: hsl(var(--foreground)) !important;
+}
+
+.earthquake-popup {
+  z-index: 100000 !important;
+  overflow: visible !important;
+}
+
+.earthquake-popup .leaflet-popup-content-wrapper {
+  border-radius: 12px !important;
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.25) !important;
+  z-index: 100000 !important;
+  overflow: visible !important;
+}
+
+.earthquake-popup .leaflet-popup-tip-container {
+  z-index: 2147483647 !important;
+}
+
+/* Removed duplicate/contradictory .leaflet-popup and .leaflet-popup-pane rules */
+
+/* Ensure map container stays within bounds and prevents overflow issues */
+.leaflet-map-pane {
+  z-index: 1 !important;
+  overflow: visible !important;
+}
+
+/* Fix for map tiles and panning issues */
+.leaflet-tile-pane {
+  z-index: 2 !important;
+}
+
+.leaflet-objects-pane {
+  z-index: 3 !important;
+}
+
+/* Make sure all leaflet control containers have lower z-index */
+.leaflet-control-container {
+  z-index: 1000 !important;
+}
+
+/* Specifically target zoom controls */
+.leaflet-control-zoom {
+  z-index: 1000 !important;
+}
+
+.leaflet-control-zoom a {
+  z-index: 1000 !important;
+}
+
+/* Force all leaflet controls to be below popups */
+.leaflet-control {
+  z-index: 1000 !important;
+}
+
+.earthquake-marker {
+  border-radius: 50%;
+  border: 2px solid white;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+/* Custom Range Slider Styling */
+.slider {
+  -webkit-appearance: none;
+  appearance: none;
+  outline: none;
+  border-radius: 8px;
+  position: relative;
+}
+
+.slider::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  height: 24px;
+  width: 24px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, hsl(var(--primary)), hsl(var(--primary)) 70%);
+  border: 3px solid white;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.slider::-webkit-slider-thumb:hover {
+  transform: scale(1.1);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+}
+
+.slider::-moz-range-thumb {
+  height: 24px;
+  width: 24px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, hsl(var(--primary)), hsl(var(--primary)) 70%);
+  border: 3px solid white;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.slider::-moz-range-thumb:hover {
+  transform: scale(1.1);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+}
+
+/* Animation for magnitude scale items */
+@keyframes pulseGlow {
+  0%, 100% {
+    opacity: 0.3;
+  }
+  50% {
+    opacity: 0.6;
+  }
+}
+
+/* Gradient backgrounds for cards */
+.card-gradient {
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.9) 0%, rgba(248, 250, 252, 0.9) 100%);
+}
+
+@media (prefers-color-scheme: dark) {
+  .card-gradient {
+    background: linear-gradient(135deg, rgba(15, 23, 42, 0.9) 0%, rgba(30, 41, 59, 0.9) 100%);
+  }
+}
+
+/* Enhanced UI Improvements */
+.slider {
+  background: linear-gradient(to right, 
+    #10b981 0%, #34d399 20%, #fbbf24 40%, 
+    #f59e0b 60%, #f97316 80%, #ef4444 100%) !important;
+}
+
+.slider::-webkit-slider-thumb {
+  background: linear-gradient(135deg, #ffffff, #f1f5f9);
+  border: 3px solid #3b82f6;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+}
+
+.slider::-webkit-slider-thumb:hover {
+  transform: scale(1.2);
+  box-shadow: 0 4px 16px rgba(59, 130, 246, 0.4);
+  border-color: #2563eb;
+}
+
+.slider::-moz-range-thumb {
+  background: linear-gradient(135deg, #ffffff, #f1f5f9);
+  border: 3px solid #3b82f6;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+}
+
+.slider::-moz-range-thumb:hover {
+  transform: scale(1.2);
+  box-shadow: 0 4px 16px rgba(59, 130, 246, 0.4);
+  border-color: #2563eb;
+}
+
+/* Enhanced card hover effects */
+.card-hover {
+  transition: all 0.3s ease;
+}
+
+.card-hover:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+}
+
+/* Enhanced backdrop blur */
+.backdrop-blur-enhanced {
+  backdrop-filter: blur(20px) saturate(180%);
+  -webkit-backdrop-filter: blur(20px) saturate(180%);
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: rgba(148, 163, 184, 0.1);
+  border-radius: 3px;
+}
+
+::-webkit-scrollbar-thumb {
+  background: rgba(148, 163, 184, 0.3);
+  border-radius: 3px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(148, 163, 184, 0.5);
+}
+
+/* Focus improvements for accessibility */
+.slider:focus-visible {
+  outline: 2px solid rgb(59 130 246 / 0.5);
+  outline-offset: 2px;
+}
+
+button:focus-visible {
+  outline: 2px solid rgb(59 130 246);
+  outline-offset: 2px;
+}
