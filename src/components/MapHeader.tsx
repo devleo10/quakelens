@@ -14,24 +14,26 @@ export default function MapHeader({
   formatTime,
 }: MapHeaderProps) {
   return (
-    <div className="flex flex-col gap-3 w-full">
+    <div className="flex flex-col gap-2 sm:gap-3 w-full">
       <div className="flex items-center justify-between w-full">
         <div className="flex items-center gap-2">
           <div className="p-1 bg-blue-600 rounded-lg shadow-lg">
-            <Activity className="h-4 w-4 text-white" />
+            <Activity className="h-3 w-3 sm:h-4 sm:w-4 text-white" />
           </div>
-          <div>
-            <span className="text-blue-700 dark:text-blue-400 text-lg font-semibold">Quakelens - Earthquake Visualizer</span>
-            <span className="text-slate-600 dark:text-slate-400 ml-2">- Global Activity</span>
+          <div className="flex flex-col sm:flex-row sm:items-center">
+            <span className="text-blue-700 dark:text-blue-400 text-base sm:text-lg font-semibold leading-tight">
+              Quakelens - Earthquake Visualizer
+            </span>
+            <span className="text-slate-600 dark:text-slate-400 text-xs sm:text-sm sm:ml-2">- Global Activity</span>
           </div>
         </div>
       </div>
       <div className="w-full">
         {earthquakeData ? (
-          <div className="flex flex-wrap gap-4 text-sm">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:flex lg:flex-wrap gap-2 sm:gap-4 text-xs sm:text-sm">
             <span className="flex items-center gap-1">
               <span className="font-medium text-slate-900 dark:text-slate-100">Updated:</span>
-              <span className="text-slate-800 dark:text-slate-200">{formatTime(earthquakeData.metadata.generated)}</span>
+              <span className="text-slate-800 dark:text-slate-200 text-xs sm:text-sm">{formatTime(earthquakeData.metadata.generated)}</span>
             </span>
             <span className="flex items-center gap-1">
               <span className="font-medium text-slate-900 dark:text-slate-100">Showing:</span>

@@ -20,22 +20,49 @@ interface EarthquakeDetailsProps {
 }
 
 export default function EarthquakeDetails({ earthquake }: EarthquakeDetailsProps) {
-  if (!earthquake) return <div className="p-4 text-center text-gray-500">Select an earthquake from the map to see details.</div>;
+  if (!earthquake) return (
+    <div className="p-3 sm:p-4 text-center text-gray-500 text-sm sm:text-base">
+      Select an earthquake from the map to see details.
+    </div>
+  );
+  
   return (
-    <div className="p-4">
-      <h2 className="text-xl font-bold mb-2">{earthquake.properties.title}</h2>
-      <p className="mb-1">Magnitude: {earthquake.properties.mag}</p>
-      <p className="mb-1">Location: {earthquake.properties.place}</p>
-      <p className="mb-1">Time: {new Date(earthquake.properties.time).toLocaleString()}</p>
+    <div className="p-3 sm:p-4 max-h-full overflow-y-auto">
+      <h2 className="text-lg sm:text-xl font-bold mb-2 sm:mb-3 leading-tight">{earthquake.properties.title}</h2>
+      <div className="grid grid-cols-1 sm:grid-cols-2 gap-2 sm:gap-3 text-sm sm:text-base">
+        <div>
+          <span className="font-semibold text-blue-600">Magnitude:</span>
+          <span className="ml-2">{earthquake.properties.mag}</span>
+        </div>
+        <div>
+          <span className="font-semibold text-blue-600">Time:</span>
+          <span className="ml-2 text-xs sm:text-sm">{new Date(earthquake.properties.time).toLocaleString()}</span>
+        </div>
+      </div>
+      <div className="mt-2 sm:mt-3">
+        <span className="font-semibold text-blue-600">Location:</span>
+        <span className="ml-2 text-sm sm:text-base">{earthquake.properties.place}</span>
+      </div>
       {earthquake.properties.tsunami > 0 && (
-        <p className="text-red-600 font-semibold mb-1">Tsunami Warning!</p>
+        <div className="mt-2 sm:mt-3 p-2 bg-red-100 border-l-4 border-red-500 text-red-700 text-sm">
+          🌊 <span className="font-semibold">Tsunami Warning!</span>
+        </div>
       )}
       {earthquake.properties.alert && (
-        <p className="text-yellow-500 mb-1">Alert Level: {earthquake.properties.alert.toUpperCase()}</p>
+        <div className="mt-2 sm:mt-3 p-2 bg-yellow-100 border-l-4 border-yellow-500 text-yellow-700 text-sm">
+          ⚠️ <span className="font-semibold">Alert Level:</span> {earthquake.properties.alert.toUpperCase()}
+        </div>
       )}
-      <a href={earthquake.properties.url} target="_blank" rel="noopener noreferrer" className="text-blue-500 underline">
-        View USGS Details
-      </a>
+      <div className="mt-3 sm:mt-4">
+        <a 
+          href={earthquake.properties.url} 
+          target="_blank" 
+          rel="noopener noreferrer" 
+          className="inline-block bg-blue-600 hover:bg-blue-700 text-white px-3 py-2 rounded text-sm font-medium transition-colors"
+        >
+          View USGS Details →
+        </a>
+      </div>
     </div>
   );
 }

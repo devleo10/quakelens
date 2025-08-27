@@ -22,17 +22,18 @@ export default function App() {
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-slate-50 via-blue-50 to-indigo-50 dark:from-slate-900 dark:via-slate-800 dark:to-slate-900">
-  <div className="container mx-auto px-2 py-2 h-screen flex flex-col">
+      <div className="container mx-auto px-2 sm:px-4 py-2 h-screen flex flex-col">
         {error && <ErrorAlert error={error} onRetry={fetchEarthquakeData} />}
 
-  <div className="flex-1 grid grid-cols-1 lg:grid-cols-4 gap-4 h-full items-stretch min-h-0">
+        {/* Mobile-first responsive layout */}
+        <div className="flex-1 flex flex-col lg:grid lg:grid-cols-4 gap-2 sm:gap-4 h-full items-stretch min-h-0">
           <SidebarSection
             stats={stats}
             selectedMagnitude={selectedMagnitude}
             setSelectedMagnitude={setSelectedMagnitude}
             fetchEarthquakeData={fetchEarthquakeData}
             loading={loading}
-            className="lg:col-span-1 xl:max-w-xs w-full"
+            className="w-full lg:col-span-1 order-2 lg:order-1"
           />
           <MapSection
             loading={loading}
@@ -42,7 +43,7 @@ export default function App() {
             formatTime={formatTime}
             getMagnitudeColor={getMagnitudeColor}
             getMagnitudeSize={getMagnitudeSize}
-            className="lg:col-span-3"
+            className="flex-1 lg:col-span-3 order-1 lg:order-2"
           />
         </div>
       </div>
