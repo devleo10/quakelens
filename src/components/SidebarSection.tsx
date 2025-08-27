@@ -15,8 +15,7 @@ export default function SidebarSection({
   stats,
   selectedMagnitude,
   setSelectedMagnitude,
-  fetchEarthquakeData,
-  loading,
+ 
   className = ""
 }: SidebarSectionProps & { className?: string }) {
   return (
