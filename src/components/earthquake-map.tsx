@@ -124,7 +124,7 @@ export default function EarthquakeMap({
 
       // Add earthquake markers with improved zoom-responsive sizing
       earthquakes.forEach((earthquake) => {
-        const [longitude, latitude, depth] = earthquake.geometry.coordinates
+        const [longitude, latitude] = earthquake.geometry.coordinates
         const magnitude = earthquake.properties.mag
 
         if (latitude && longitude && mapInstanceRef.current) {
@@ -140,76 +140,6 @@ export default function EarthquakeMap({
             opacity: 1,
             fillOpacity: 0.85,
             className: "earthquake-marker",
-          })
-
-          const popupContent = `
-            <div style="padding: 16px; min-width: 280px; max-width: 320px; font-family: inherit; color: hsl(var(--card-foreground));">
-              <h3 style="font-weight: bold; font-size: 18px; margin-bottom: 12px; color: hsl(var(--card-foreground)); line-height: 1.2;">${earthquake.properties.title}</h3>
-              <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 12px; font-size: 14px; margin-bottom: 12px;">
-                <div style="display: flex; flex-direction: column; gap: 8px;">
-                  <div>
-                    <span style="color: hsl(var(--muted-foreground)); display: block; font-size: 12px; text-transform: uppercase; letter-spacing: 0.05em;">Magnitude</span>
-                    <span style="font-weight: bold; font-size: 18px; color: ${getMagnitudeColor(magnitude)}">${magnitude.toFixed(1)}</span>
-                  </div>
-                  <div>
-                    <span style="color: hsl(var(--muted-foreground)); display: block; font-size: 12px; text-transform: uppercase; letter-spacing: 0.05em;">Depth</span>
-                    <span style="font-weight: 600;">${depth.toFixed(1)} km</span>
-                  </div>
-                </div>
-                <div style="display: flex; flex-direction: column; gap: 8px;">
-                  <div>
-                    <span style="color: hsl(var(--muted-foreground)); display: block; font-size: 12px; text-transform: uppercase; letter-spacing: 0.05em;">Time</span>
-                    <span style="font-weight: 600; font-size: 12px;">${formatTime(earthquake.properties.time)}</span>
-                  </div>
-                  <div>
-                    <span style="color: hsl(var(--muted-foreground)); display: block; font-size: 12px; text-transform: uppercase; letter-spacing: 0.05em;">Coordinates</span>
-                    <span style="font-family: monospace; font-size: 12px;">${latitude.toFixed(3)}, ${longitude.toFixed(3)}</span>
-                  </div>
-                </div>
-              </div>
-              <div style="margin-bottom: 12px;">
-                <span style="color: hsl(var(--muted-foreground)); display: block; font-size: 12px; text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: 4px;">Location</span>
-                <span style="font-weight: 500; font-size: 14px;">${earthquake.properties.place}</span>
-              </div>
-              ${
-                earthquake.properties.tsunami
-                  ? '<div style="margin-bottom: 12px; padding: 12px; background-color: rgba(239, 68, 68, 0.1); border: 1px solid rgba(239, 68, 68, 0.2); border-radius: 8px;"><div style="display: flex; align-items: center; gap: 8px; color: #dc2626; font-size: 14px; font-weight: 600;">🌊 Tsunami Warning</div></div>'
-                  : ""
-              }
-              ${
-                earthquake.properties.alert
-                  ? `<div style="margin-bottom: 12px; padding: 8px; background-color: rgba(251, 191, 36, 0.1); border: 1px solid rgba(251, 191, 36, 0.2); border-radius: 6px; color: #d97706; font-size: 14px; font-weight: 500;">⚠️ Alert Level: ${earthquake.properties.alert.toUpperCase()}</div>`
-                  : ""
-              }
-              <div style="padding-top: 12px; border-top: 1px solid hsl(var(--border));">
-                <a 
-                  href="${earthquake.properties.url}" 
-                  target="_blank" 
-                  rel="noopener noreferrer"
-                  style="display: inline-flex; align-items: center; gap: 4px; color: hsl(var(--primary)); font-size: 14px; font-weight: 600; text-decoration: none; transition: color 0.2s ease;"
-                  onmouseover="this.style.color='hsl(var(--primary)/0.8)'"
-                  onmouseout="this.style.color='hsl(var(--primary))'"
-                >
-                  View USGS Details
-                  <svg style="width: 12px; height: 12px;" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"></path>
-                  </svg>
-                </a>
-              </div>
-            </div>
-          `
-
-          marker.bindPopup(popupContent, {
-            maxWidth: 350,
-            className: "earthquake-popup",
-            closeButton: true,
-            autoPan: true,
-            autoPanPaddingTopLeft: [10, 10],
-            autoPanPaddingBottomRight: [10, 10],
-            autoClose: true,
-            closeOnClick: false,
-            keepInView: true,
-            offset: [0, -10],
           })
 
           marker.addTo(mapInstanceRef.current)
