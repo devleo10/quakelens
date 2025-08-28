@@ -34,7 +34,7 @@ export default function SidebarFilter({
             step="0.5"
             value={selectedMagnitude}
             onChange={e => setSelectedMagnitude(Number(e.target.value))}
-            className="w-full h-2 sm:h-3 rounded-lg appearance-none cursor-pointer bg-gradient-to-r from-green-400 via-yellow-400 via-orange-400 to-red-500 slider"
+            className="w-full h-2 sm:h-3 rounded-lg appearance-none cursor-pointer bg-gradient-to-r from-green-400 via-yellow-400 to-red-500 slider"
           />
           <div className="flex justify-between text-[10px] sm:text-xs text-slate-500 dark:text-slate-400 px-1">
             <span className="text-green-700 dark:text-green-300">0</span>
