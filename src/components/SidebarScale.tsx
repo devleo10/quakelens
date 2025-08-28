@@ -22,17 +22,17 @@ export default function SidebarScale({ minHeight = "" }: { minHeight?: string })
         ].map(item => (
           <div
             key={item.range}
-            className="flex items-center gap-1 py-0.5 px-1 rounded min-h-0"
-            style={{ lineHeight: 1, paddingTop: 0, paddingBottom: 0 }}
+            className="flex items-center gap-2 py-1 px-1 rounded min-h-0"
+            style={{ lineHeight: 1.2 }}
           >
             <div
-              className="w-2 h-2 rounded-full flex-shrink-0 shadow-sm"
+              className="w-3 h-3 rounded-full flex-shrink-0 shadow-sm"
               style={{ backgroundColor: item.color }}
             />
             <div className="flex-1 flex flex-row items-center justify-between min-w-0">
-              <span className="text-[10px] font-semibold text-slate-700 dark:text-slate-300 w-7">{item.range}</span>
-              <span className="text-[10px] font-medium text-slate-600 dark:text-slate-400 w-10 text-right">{item.label}</span>
-              <span className="text-[10px] text-slate-500 dark:text-slate-500 w-8 text-right">{item.desc}</span>
+              <span className="text-sm font-semibold text-slate-700 dark:text-slate-300 w-8">{item.range}</span>
+              <span className="text-sm font-medium text-slate-600 dark:text-slate-400 w-12 text-right">{item.label}</span>
+              <span className="text-xs text-slate-500 dark:text-slate-500 w-10 text-right">{item.desc}</span>
             </div>
           </div>
         ))}

@@ -18,16 +18,16 @@ export default function SidebarStats({ stats, minHeight = "" }: SidebarStatsProp
       </CardHeader>
       <CardContent className="flex flex-row justify-between items-center gap-2 sm:gap-4 px-1 sm:px-2 py-1 sm:py-2 flex-1">
         <div className="flex flex-col items-center flex-1 min-w-0 gap-0.5 sm:gap-1">
-          <span className="text-lg sm:text-2xl font-bold text-blue-600 dark:text-blue-400 leading-tight">{stats.total}</span>
-          <span className="text-[10px] sm:text-xs text-slate-500 dark:text-slate-400">Events</span>
+          <span className="text-2xl sm:text-3xl font-bold text-blue-600 dark:text-blue-400 leading-tight">{stats.total}</span>
+          <span className="text-sm sm:text-base text-slate-500 dark:text-slate-400 font-medium">Events</span>
         </div>
         <div className="flex flex-col items-center flex-1 min-w-0 border-x border-slate-200 dark:border-slate-700 px-2 sm:px-3 gap-0.5 sm:gap-1">
-          <span className="text-lg sm:text-2xl font-bold text-orange-600 dark:text-orange-400 leading-tight">{stats.maxMagnitude.toFixed(1)}</span>
-          <span className="text-[10px] sm:text-xs text-slate-500 dark:text-slate-400">Max Mag</span>
+          <span className="text-2xl sm:text-3xl font-bold text-orange-600 dark:text-orange-400 leading-tight">{stats.maxMagnitude.toFixed(1)}</span>
+          <span className="text-sm sm:text-base text-slate-500 dark:text-slate-400 font-medium">Max Mag</span>
         </div>
         <div className="flex flex-col items-center flex-1 min-w-0 gap-0.5 sm:gap-1">
-          <span className="text-lg sm:text-2xl font-bold text-green-600 dark:text-green-400 leading-tight">{stats.avgMagnitude}</span>
-          <span className="text-[10px] sm:text-xs text-slate-500 dark:text-slate-400">Avg Mag</span>
+          <span className="text-2xl sm:text-3xl font-bold text-green-600 dark:text-green-400 leading-tight">{stats.avgMagnitude}</span>
+          <span className="text-sm sm:text-base text-slate-500 dark:text-slate-400 font-medium">Avg Mag</span>
         </div>
       </CardContent>
     </Card>

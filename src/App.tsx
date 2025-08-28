@@ -21,12 +21,12 @@ export default function App() {
   }
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-slate-50 via-blue-50 to-indigo-50 dark:from-slate-900 dark:via-slate-800 dark:to-slate-900">
-      <div className="container mx-auto px-2 sm:px-4 py-2 h-screen flex flex-col">
+    <div className="h-screen bg-gradient-to-br from-slate-50 via-blue-50 to-indigo-50 dark:from-slate-900 dark:via-slate-800 dark:to-slate-900 overflow-hidden">
+      <div className="container mx-auto px-1 sm:px-2 py-1 h-full flex flex-col">
         {error && <ErrorAlert error={error} onRetry={fetchEarthquakeData} />}
 
         {/* Mobile-first responsive layout */}
-        <div className="flex-1 flex flex-col lg:grid lg:grid-cols-4 gap-2 sm:gap-4 h-full items-stretch min-h-0">
+        <div className="flex-1 flex flex-col lg:grid lg:grid-cols-4 gap-1 sm:gap-2 h-full items-stretch min-h-0 max-h-full">
           <SidebarSection
             stats={stats}
             selectedMagnitude={selectedMagnitude}

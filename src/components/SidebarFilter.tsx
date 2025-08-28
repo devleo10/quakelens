@@ -21,10 +21,10 @@ export default function SidebarFilter({
       </CardHeader>
       <CardContent className="space-y-2 sm:space-y-3 p-2 sm:p-3">
         <div className="text-center">
-          <div className="text-lg sm:text-xl font-bold text-blue-600 dark:text-blue-400">
+          <div className="text-2xl sm:text-3xl font-bold text-blue-600 dark:text-blue-400">
             {selectedMagnitude.toFixed(1)}
           </div>
-          <div className="text-[10px] sm:text-xs text-slate-600 dark:text-slate-400">Min Magnitude</div>
+          <div className="text-sm sm:text-base text-slate-600 dark:text-slate-400 font-medium">Min Magnitude</div>
         </div>
         <div className="space-y-1 sm:space-y-2">
           <input
